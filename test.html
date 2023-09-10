@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Directed By Rim</title>
+  <style>
+    /* Lamp container */
+    .lamp-container {
+      display: flex;
+      justify-content: center;
+      align-items: flex-end;
+      height: 100vh;
+      background-color: #111;
+    }
+
+    /* Lamp base */
+    .base {
+      width: 20px;
+      height: 50px;
+      background-color: #333;
+      border-radius: 10px;
+    }
+
+    /* Lamp cord */
+    .cord {
+      width: 5px;
+      height: 100px;
+      background-color: #444;
+    }
+
+    /* Lamp styles */
+    .lamp {
+      width: 120px;
+      height: 200px;
+      background: linear-gradient(to bottom, #ffcc00, #ff9933); /* Gradient for lampshade (yellow to orange) */
+      border-radius: 10px;
+      position: relative;
+      overflow: hidden;
+      box-shadow: 0 0 30px rgba(255, 204, 0, 0.6); /* Soft glow effect for the entire lamp */
+    }
+
+    .light-source {
+      position: absolute;
+      top: 10%;
+      left: 50%;
+      width: 30px;
+      height: 30px;
+      background-color: rgba(255, 255, 147, 0.8); /* Light bulb color with transparency */
+      border-radius: 50%;
+      transform: translateX(-50%);
+      box-shadow: 0 0 50px rgba(255, 255, 147, 0.8), 0 0 10px rgba(255, 255, 147, 0.8); /* Soft glowing effect for the light bulb */
+    }
+
+    /* Brightness control slider */
+    input[type="range"] {
+      width: 80%;
+      margin: 20px auto;
+      display: block;
+    }
+  </style>
+</head>
+<body>
+  <div class="lamp-container">
+    <div class="base"></div>
+    <div class="cord"></div>
+    <div class="lamp" id="lamp">
+      <div class="light-source"></div> <!-- Light source element -->
+    </div>
+  </div>
+  <input type="range" id="brightnessControl" min="0" max="100" value="100">
+  
+  <script>
+    // JavaScript to control lamp brightness
+    const lamp = document.getElementById("lamp");
+    const brightnessControl = document.getElementById("brightnessControl");
+
+    brightnessControl.addEventListener("input", () => {
+      const brightness = brightnessControl.value;
+      lamp.style.opacity = brightness / 100;
+    });
+  </script>
+</body>
+</html>
